@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+        http://www.springframework.org/schema/tx
+   		http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	    <property name="url" value="jdbc:mysql://localhost:3306/springtest?useUnicode=true&amp;characterEncoding=utf-8"></property>
+	    <property name="username" value="root"></property>
+	    <property name="password" value="root"></property>
+	</bean>
+
+    <!--jdbcTemplate-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
+    </bean>
+	
+    <!--把需要的三个类以最基本bean的形式定义在这配置文件中，最基本的bean就是只有id和class俩个属性的bean
+    
+    <bean id="userService" class="com.test.UserServiceImpl"></bean>
+ 
+    <bean id="userController" class="com.test.UserControl"></bean>
+    
+    -->
+    <!--userDao-->
+    <bean id="carDao" class="edu.hhtc.jsj.dao.CarDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"></property>
+    </bean>
+ 
+    
+ 
+   <!--通过以上4行配置我们就可以得到正确的结果了，相比于不使用注解的方式，这配置已经节省了很多配置量了-->
+    <!--但是还是有人会觉得不够洁简，所以开发spring框架的人又提供了另外一种功能，扫描功能，能够我们直接省略bean的配置，看下面配置-->
+    <!--这一行配置能够顶替上面3个bean，而且spring框架会扫描 com.test包下的所有类，只要你配置了注解处理器他会去对包中每个注解识别处理-->
+    <!--如果你使用注解的方式来装配，那么以后你可以把写bean的代码也省略了，而这种方式也是我们项目最最最常用的，必须掌握且熟练运用的一种方式-->
+    
+    
+	<context:component-scan base-package="edu.hhtc.jsj.*" />
+	<context:annotation-config />
+	<aop:aspectj-autoproxy proxy-target-class="true"/> 
+</beans>

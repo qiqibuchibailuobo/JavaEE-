@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xmlns:context="http://www.springframework.org/schema/context"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+      http://www.springframework.org/schema/context 
+  http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- 使用bean元素的autowire属性完成自动装配 -->
+	<bean id="userDao" 
+		class="edu.hhtc.jsj.annotation.UserDao" />
+	<bean id="userService" 
+	  class="edu.hhtc.jsj.annotation.UserService" autowire="byName" />
+	<bean id="userController" 
+	  class="edu.hhtc.jsj.annotation.UserController" autowire="byName" scope="prototype"/>
+	  
+</beans>

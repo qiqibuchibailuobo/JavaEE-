@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/spring-framework-4.3.6.RELEASE/libs/spring-beans-4.3.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/spring-framework-4.3.6.RELEASE/libs/spring-context-4.3.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/spring-framework-4.3.6.RELEASE/libs/spring-core-4.3.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/spring-framework-4.3.6.RELEASE/libs/spring-expression-4.3.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/ch14b/out/artifacts/ch14/WEB-INF/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/spring-framework-4.3.6.RELEASE/libs/spring-aop-4.3.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/spring-framework-4.3.6.RELEASE/libs/spring-aspects-4.3.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/spring依赖包/org.aspectj/com.springsource.org.aspectj.weaver/1.6.8.RELEASE/com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/aop包/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/aop包/aspectjweaver-1.8.13.jar"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/spring-framework-4.3.6.RELEASE/libs/spring-jdbc-4.3.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/spring-framework-4.3.6.RELEASE/libs/spring-tx-4.3.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/学习资料/study/spring和mybatis整合包/mysql-connector-java-5.1.45-bin.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
