@@ -37,9 +37,31 @@
     <bean id="carDao" class="edu.hhtc.jsj.dao.CarDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"></property>
     </bean>
- 
+    <bean id="accountDao" class="edu.hhtc.jsj.dao.AccountDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"></property>
+    </bean>
+
     
- 
+ <bean id="transactionManager" class=
+   "org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+   </bean>	
+   <!-- 5.编写通知：对事务进行增强(通知),需要编写对切入点和具体执行事务细节 -->
+   <tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- name：*表示任意方法名称 -->
+			<tx:method name="*" propagation="REQUIRED" 
+                           isolation="DEFAULT" read-only="false" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 6.编写aop，让spring自动对目标生成代理，需要使用AspectJ的表达式 -->
+	<aop:config>
+		<!-- 切入点 -->
+		<aop:pointcut expression="execution(* edu.hhtc.jsj.dao.*.*(..))"
+			id="txPointCut" />
+		<!-- 切面：将切入点与通知整合 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut" />
+	</aop:config>
    <!--通过以上4行配置我们就可以得到正确的结果了，相比于不使用注解的方式，这配置已经节省了很多配置量了-->
     <!--但是还是有人会觉得不够洁简，所以开发spring框架的人又提供了另外一种功能，扫描功能，能够我们直接省略bean的配置，看下面配置-->
     <!--这一行配置能够顶替上面3个bean，而且spring框架会扫描 com.test包下的所有类，只要你配置了注解处理器他会去对包中每个注解识别处理-->
